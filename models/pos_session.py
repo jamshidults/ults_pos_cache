@@ -12,7 +12,7 @@ class PosSession(models.Model):
         fields_str = str(loading_info['search_params']['fields'])
         domain_str = str([list(item) if isinstance(item, (list, tuple)) else item for item in loading_info['search_params']['domain']])
         pos_cache = self.env['pos.cache']
-        cache = pos_cache.search([])
+        cache = pos_cache.search([],limit=1)
 
         if not cache:
             cache = pos_cache.create({
